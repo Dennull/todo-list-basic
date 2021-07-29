@@ -12,6 +12,15 @@ function App() {
     e.preventDefault();
     if (!inputText) {
       // Show error
+    } else if (inputText && isEditing) {
+      setList(
+        list.map((item) => {
+          if (item.id === editID) {
+            return { ...item, name: inputText };
+          }
+          return item;
+        })
+      );
     } else {
       const newItem = { id: new Date().getTime().toString(), name: inputText };
       setList([...list, newItem]);
@@ -22,6 +31,13 @@ function App() {
   const removeItem = (id) => {
     const newList = list.filter((item) => item.id !== id);
     setList(newList);
+  };
+
+  const editItem = (id) => {
+    setIsEditing(true);
+    setEditID(id);
+    const editingItem = list.find((item) => item.id === id);
+    setInputText(editingItem.name);
   };
 
   const clearList = () => {
@@ -41,7 +57,7 @@ function App() {
           ></input>
           <button type="submit">Add</button>
         </form>
-        <List list={list} removeItem={removeItem} clearList={clearList} />
+        <List list={list} removeItem={removeItem} editItem={editItem} />
         {list.length > 0 && <button onClick={clearList}>Clear All</button>}
       </main>
     </>

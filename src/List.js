@@ -1,6 +1,6 @@
 import React from "react";
 
-const List = ({ list, removeItem }) => {
+const List = ({ list, removeItem, editItem }) => {
   return (
     <article>
       {list.map((item) => {
@@ -9,6 +9,7 @@ const List = ({ list, removeItem }) => {
           <div>
             <p key={id}>{name}</p>
             <button onClick={() => removeItem(id)}>Delete</button>
+            <button onClick={() => editItem(id)}>Edit</button>
           </div>
         );
       })}
