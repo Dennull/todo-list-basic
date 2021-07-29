@@ -6,8 +6,8 @@ const List = ({ list, removeItem, editItem }) => {
       {list.map((item) => {
         const { id, name } = item;
         return (
-          <div>
-            <p key={id}>{name}</p>
+          <div key={id}>
+            <p>{name}</p>
             <button onClick={() => removeItem(id)}>Delete</button>
             <button onClick={() => editItem(id)}>Edit</button>
           </div>

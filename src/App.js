@@ -59,7 +59,9 @@ function App() {
   return (
     <>
       <h1>Todo List</h1>
-      {alert.show && <Alert {...alert} />}
+      {alert.show && (
+        <Alert {...alert} removeAlert={displayAlert} list={list} />
+      )}
       <main>
         <form onSubmit={handleSubmit}>
           <input
