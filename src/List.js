@@ -1,13 +1,18 @@
 import React from "react";
 
-const List = ({ list }) => {
+const List = ({ list, removeItem }) => {
   return (
-    <section>
+    <article>
       {list.map((item) => {
         const { id, name } = item;
-        return <p key={id}>{name}</p>;
+        return (
+          <div>
+            <p key={id}>{name}</p>
+            <button onClick={() => removeItem(id)}>Delete</button>
+          </div>
+        );
       })}
-    </section>
+    </article>
   );
 };
 

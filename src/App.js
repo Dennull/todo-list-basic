@@ -19,6 +19,11 @@ function App() {
     setInputText("");
   };
 
+  const removeItem = (id) => {
+    const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+  };
+
   return (
     <>
       <h1>Todo List</h1>
@@ -32,7 +37,7 @@ function App() {
           ></input>
           <button type="submit">Add</button>
         </form>
-        <List list={list} />
+        <List list={list} removeItem={removeItem} />
       </main>
     </>
   );
