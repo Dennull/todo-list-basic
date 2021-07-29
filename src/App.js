@@ -1,5 +1,6 @@
 import "./App.css";
 import List from "./List";
+import Alert from "./Alert";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -7,11 +8,12 @@ function App() {
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
+  const [alert, setAlert] = useState({ show: false, message: "", type: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!inputText) {
-      // Show error
+      displayAlert(true, "Please enter a value", "error");
     } else if (inputText && isEditing) {
       setList(
         list.map((item) => {
@@ -21,16 +23,21 @@ function App() {
           return item;
         })
       );
+      setInputText("");
+      setIsEditing(false);
+      displayAlert(true, "Item changed", "success");
     } else {
       const newItem = { id: new Date().getTime().toString(), name: inputText };
       setList([...list, newItem]);
+      setInputText("");
+      displayAlert(true, "Item added", "success");
     }
-    setInputText("");
   };
 
   const removeItem = (id) => {
     const newList = list.filter((item) => item.id !== id);
     setList(newList);
+    displayAlert(true, "Item removed", "success");
   };
 
   const editItem = (id) => {
@@ -42,11 +49,17 @@ function App() {
 
   const clearList = () => {
     setList([]);
+    displayAlert(true, "List cleared", "success");
+  };
+
+  const displayAlert = (show = false, message, type) => {
+    setAlert({ show, message, type });
   };
 
   return (
     <>
       <h1>Todo List</h1>
+      {alert.show && <Alert {...alert} />}
       <main>
         <form onSubmit={handleSubmit}>
           <input
