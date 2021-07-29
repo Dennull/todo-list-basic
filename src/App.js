@@ -24,6 +24,10 @@ function App() {
     setList(newList);
   };
 
+  const clearList = () => {
+    setList([]);
+  };
+
   return (
     <>
       <h1>Todo List</h1>
@@ -37,7 +41,8 @@ function App() {
           ></input>
           <button type="submit">Add</button>
         </form>
-        <List list={list} removeItem={removeItem} />
+        <List list={list} removeItem={removeItem} clearList={clearList} />
+        {list.length > 0 && <button onClick={clearList}>Clear All</button>}
       </main>
     </>
   );
