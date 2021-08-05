@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare, faSquare } from "@fortawesome/free-solid-svg-icons";
 
 const List = ({ list, removeItem, editItem, completeItem }) => {
   return (
@@ -12,7 +14,11 @@ const List = ({ list, removeItem, editItem, completeItem }) => {
           >
             <p>{name}</p>
             <button onClick={() => completeItem(id)}>
-              {item.completed ? "Uncompleted" : "Completed"}
+              {item.completed ? (
+                <FontAwesomeIcon icon={faCheckSquare} />
+              ) : (
+                <FontAwesomeIcon icon={faSquare} />
+              )}
             </button>
             <button onClick={() => removeItem(id)}>Delete</button>
             <button onClick={() => editItem(id)}>Edit</button>
