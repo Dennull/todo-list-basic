@@ -1,6 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckSquare,
+  faSquare,
+  faTrashAlt,
+  faEdit,
+} from "@fortawesome/free-regular-svg-icons";
 
 const List = ({ list, removeItem, editItem, completeItem }) => {
   return (
@@ -13,15 +18,19 @@ const List = ({ list, removeItem, editItem, completeItem }) => {
             className={item.completed ? "completed-item" : "todo-item"}
           >
             <p>{name}</p>
-            <button onClick={() => completeItem(id)}>
+            <button onClick={() => completeItem(id)} className="complete-btn">
               {item.completed ? (
                 <FontAwesomeIcon icon={faCheckSquare} />
               ) : (
                 <FontAwesomeIcon icon={faSquare} />
               )}
             </button>
-            <button onClick={() => removeItem(id)}>Delete</button>
-            <button onClick={() => editItem(id)}>Edit</button>
+            <button onClick={() => removeItem(id)} className="delete-btn">
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </button>
+            <button onClick={() => editItem(id)} className="edit-btn">
+              <FontAwesomeIcon icon={faEdit} />
+            </button>
           </div>
         );
       })}
