@@ -9,7 +9,7 @@ const Alert = ({ message, type, removeAlert, list }) => {
   }, [list, removeAlert]);
 
   return (
-    <div>
+    <div className={`alert alert-${type}`}>
       <h3>{message}</h3>
     </div>
   );

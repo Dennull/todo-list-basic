@@ -81,19 +81,22 @@ function App() {
 
   return (
     <>
-      <h1>Todo List</h1>
-      {alert.show && (
-        <Alert {...alert} removeAlert={displayAlert} list={list} />
-      )}
-      <main>
-        <form onSubmit={handleSubmit}>
+      <section>
+        <h1>Todo List</h1>
+        {alert.show && (
+          <Alert {...alert} removeAlert={displayAlert} list={list} />
+        )}
+        <form className="todo-form" onSubmit={handleSubmit}>
           <input
             type="text"
+            className="todo-input"
             placeholder="Add an Item"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
           ></input>
-          <button type="submit">Add</button>
+          <button className="submit-btn" type="submit">
+            Add
+          </button>
         </form>
         <List
           list={list}
@@ -101,8 +104,12 @@ function App() {
           editItem={editItem}
           completeItem={completeItem}
         />
-        {list.length > 0 && <button onClick={clearList}>Clear All</button>}
-      </main>
+        {list.length > 0 && (
+          <button className="clear-btn" onClick={clearList}>
+            Clear All
+          </button>
+        )}
+      </section>
     </>
   );
 }

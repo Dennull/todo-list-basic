@@ -9,13 +9,15 @@ import {
 
 const List = ({ list, removeItem, editItem, completeItem }) => {
   return (
-    <article>
+    <article className="list">
       {list.map((item) => {
         const { id, name } = item;
         return (
           <div
             key={id}
-            className={item.completed ? "completed-item" : "todo-item"}
+            className={`list-item ${
+              item.completed ? "completed-item" : "todo-item"
+            }`}
           >
             <p>{name}</p>
             <button onClick={() => completeItem(id)} className="complete-btn">
