@@ -27,7 +27,11 @@ function App() {
       setIsEditing(false);
       displayAlert(true, "Item changed", "success");
     } else {
-      const newItem = { id: new Date().getTime().toString(), name: inputText };
+      const newItem = {
+        id: new Date().getTime().toString(),
+        name: inputText,
+        completed: false,
+      };
       setList([...list, newItem]);
       setInputText("");
       displayAlert(true, "Item added", "success");
@@ -45,6 +49,13 @@ function App() {
     setEditID(id);
     const editingItem = list.find((item) => item.id === id);
     setInputText(editingItem.name);
+  };
+
+  const completeItem = (id) => {
+    const newList = list.map((item) =>
+      item.id === id ? { ...item, completed: true } : item
+    );
+    setList(newList);
   };
 
   const clearList = () => {
@@ -72,7 +83,12 @@ function App() {
           ></input>
           <button type="submit">Add</button>
         </form>
-        <List list={list} removeItem={removeItem} editItem={editItem} />
+        <List
+          list={list}
+          removeItem={removeItem}
+          editItem={editItem}
+          completeItem={completeItem}
+        />
         {list.length > 0 && <button onClick={clearList}>Clear All</button>}
       </main>
     </>
