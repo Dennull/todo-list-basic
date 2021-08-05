@@ -53,7 +53,7 @@ function App() {
 
   const completeItem = (id) => {
     const newList = list.map((item) =>
-      item.id === id ? { ...item, completed: true } : item
+      item.id === id ? { ...item, completed: !item.completed } : item
     );
     setList(newList);
   };
