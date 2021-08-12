@@ -7,7 +7,7 @@ import {
   faEdit,
 } from "@fortawesome/free-regular-svg-icons";
 
-const List = ({ list, removeItem, editItem, completeItem }) => {
+const List = ({ list, removeItem, editItem, editID, completeItem }) => {
   return (
     <article className="list">
       {list.map((item) => {
@@ -15,8 +15,8 @@ const List = ({ list, removeItem, editItem, completeItem }) => {
         return (
           <div
             key={id}
-            className={`list-item ${
-              item.completed ? "completed-item" : "todo-item"
+            className={`list-item ${item.completed && "completed-item"} ${
+              editID === id && "editing-item"
             }`}
           >
             <p>{name}</p>

@@ -33,6 +33,7 @@ function App() {
       );
       setInputText("");
       setIsEditing(false);
+      setEditID(null);
       displayAlert(true, "Item changed", "success");
     } else {
       const newItem = {
@@ -102,6 +103,7 @@ function App() {
           list={list}
           removeItem={removeItem}
           editItem={editItem}
+          editID={editID}
           completeItem={completeItem}
         />
         {list.length > 0 && (

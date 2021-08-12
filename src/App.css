@@ -29,7 +29,7 @@ section {
 
 h1 {
   line-height: 1.25;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 1.25rem;
 }
 
@@ -41,14 +41,15 @@ h1 {
 }
 
 .todo-input {
-  padding: 0.25rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
   border: 1px solid black;
   border-radius: 3px 0px 0px 3px;
   font-size: 0.9rem;
 }
 
 .submit-btn {
-  padding: 0.25rem;
+  padding: 0.5rem;
   border: 1px solid black;
   border-left-style: none;
   border-radius: 0px 3px 3px 0px;
@@ -86,7 +87,9 @@ h1 {
 }
 
 .list-item {
+  padding: 0.25rem;
   margin-bottom: 0.5rem;
+  min-width: fit-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -94,6 +97,11 @@ h1 {
 
 .completed-item {
   text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.editing-item {
+  border: 2px solid thistle;
 }
 
 .clear-btn {
