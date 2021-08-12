@@ -1,7 +1,7 @@
 import "./App.css";
 import List from "./List";
 import Alert from "./Alert";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const getLocalStorage = () => {
   if (localStorage.getItem("list")) {
@@ -17,6 +17,7 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({ show: false, message: "", type: "" });
+  const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,6 +81,11 @@ function App() {
     localStorage.setItem("list", JSON.stringify(list));
   }, [list]);
 
+  useEffect(() => {
+    inputRef.current.focus();
+    inputRef.current.selectionStart = inputRef.current.value.length;
+  });
+
   return (
     <>
       <section>
@@ -94,6 +100,7 @@ function App() {
             placeholder="Add an Item"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
+            ref={inputRef}
           ></input>
           <button className="submit-btn" type="submit">
             {isEditing ? "Edit" : "Add"}
