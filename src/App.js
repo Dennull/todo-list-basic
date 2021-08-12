@@ -95,7 +95,7 @@ function App() {
             onChange={(e) => setInputText(e.target.value)}
           ></input>
           <button className="submit-btn" type="submit">
-            Add
+            {isEditing ? "Edit" : "Add"}
           </button>
         </form>
         <List

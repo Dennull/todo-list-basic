@@ -20,19 +20,21 @@ const List = ({ list, removeItem, editItem, completeItem }) => {
             }`}
           >
             <p>{name}</p>
-            <button onClick={() => completeItem(id)} className="complete-btn">
-              {item.completed ? (
-                <FontAwesomeIcon icon={faCheckSquare} />
-              ) : (
-                <FontAwesomeIcon icon={faSquare} />
-              )}
-            </button>
-            <button onClick={() => removeItem(id)} className="delete-btn">
-              <FontAwesomeIcon icon={faTrashAlt} />
-            </button>
-            <button onClick={() => editItem(id)} className="edit-btn">
-              <FontAwesomeIcon icon={faEdit} />
-            </button>
+            <div className="btn-container">
+              <button onClick={() => completeItem(id)} className="complete-btn">
+                {item.completed ? (
+                  <FontAwesomeIcon icon={faCheckSquare} />
+                ) : (
+                  <FontAwesomeIcon icon={faSquare} />
+                )}
+              </button>
+              <button onClick={() => removeItem(id)} className="delete-btn">
+                <FontAwesomeIcon icon={faTrashAlt} />
+              </button>
+              <button onClick={() => editItem(id)} className="edit-btn">
+                <FontAwesomeIcon icon={faEdit} />
+              </button>
+            </div>
           </div>
         );
       })}
