@@ -49,7 +49,7 @@ function App() {
   const removeItem = (id) => {
     const newList = list.filter((item) => item.id !== id);
     setList(newList);
-    displayAlert(true, "Item removed", "success");
+    displayAlert(true, "Item removed", "error");
   };
 
   const editItem = (id) => {
@@ -68,7 +68,7 @@ function App() {
 
   const clearList = () => {
     setList([]);
-    displayAlert(true, "List cleared", "success");
+    displayAlert(true, "List cleared", "error");
   };
 
   const displayAlert = (show = false, message, type) => {
